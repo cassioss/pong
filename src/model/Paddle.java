@@ -9,7 +9,7 @@ public class Paddle {
 
 	public static final int PADDLE_WIDTH = 3;
 	public static final int PADDLE_HEIGHT = 30;
-	public static final int PADDLE_SPEED = 15;
+	public static final double PADDLE_SPEED = 15.0;
 
 	// Paddle's direction for speed
 
@@ -19,14 +19,14 @@ public class Paddle {
 	// Paddle's variables
 
 	private double x, y;
-	private int currentSpeed;
+	private double currentSpeed;
 
 	// Constructor
 
 	public Paddle(double x, double y) {
 		setX(x);
 		setY(y);
-		currentSpeed = 0;
+		currentSpeed = 0.0;
 	}
 
 	// Getters and setters for the position
@@ -55,7 +55,7 @@ public class Paddle {
 		else if (direction == PADDLE_DIRECTION_DOWN)
 			currentSpeed = -PADDLE_SPEED;
 		else
-			currentSpeed = 0;
+			currentSpeed = 0.0;
 	}
 
 }

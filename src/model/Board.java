@@ -9,7 +9,7 @@ public class Board {
 
 	// Board's dimensions
 
-	public static final int width = 800;
-	public static final int height = 600;
+	public static final int BOARD_WIDTH = 800;
+	public static final int BOARD_HEIGHT = 600;
 
 }

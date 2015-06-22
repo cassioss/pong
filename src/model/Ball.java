@@ -16,10 +16,17 @@ public class Ball {
 	// Constructor
 
 	public Ball() {
-		x = Board.width / 2;
-		y = Board.height / 2;
+		x = Board.BOARD_WIDTH / 2;
+		y = Board.BOARD_HEIGHT / 2;
 		speedX = 15.0;
 		speedY = 0.0;
+	}
+
+	// Reflection mechanism for the paddles
+
+	public void reflectOnPaddle(double paddleSpeed) {
+		speedX *= -1.0;
+		speedY -= paddleSpeed;
 	}
 
 }
