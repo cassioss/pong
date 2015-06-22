@@ -7,23 +7,30 @@ package model;
  */
 public class Paddle {
 
-	public static final int width = 3;
-	public static final int height = 30;
-	public static final int speed = 15;
-	
+	public static final int PADDLE_WIDTH = 3;
+	public static final int PADDLE_HEIGHT = 30;
+	public static final int PADDLE_SPEED = 15;
+
+	// Paddle's direction for speed
+
+	public static final int PADDLE_DIRECTION_UP = 1;
+	public static final int PADDLE_DIRECTION_DOWN = -1;
+
+	// Paddle's variables
+
 	private double x, y;
 	private int currentSpeed;
-	
+
 	// Constructor
-	
-	public Paddle (double x, double y){
-		this.setX(x);
-		this.setY(y);
-		this.currentSpeed = 0;
+
+	public Paddle(double x, double y) {
+		setX(x);
+		setY(y);
+		currentSpeed = 0;
 	}
-	
+
 	// Getters and setters for the position
-	
+
 	public double getX() {
 		return x;
 	}
@@ -38,6 +45,17 @@ public class Paddle {
 
 	public void setY(double y) {
 		this.y = y;
+	}
+
+	// Setter for speed
+
+	public void setSpeed(int direction) {
+		if (direction == PADDLE_DIRECTION_UP)
+			currentSpeed = PADDLE_SPEED;
+		else if (direction == PADDLE_DIRECTION_DOWN)
+			currentSpeed = -PADDLE_SPEED;
+		else
+			currentSpeed = 0;
 	}
 
 }
