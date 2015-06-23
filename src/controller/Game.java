@@ -15,6 +15,9 @@ public class Game {
 		setFrame();
 	}
 
+	/**
+	 * Sets the Pong frame.
+	 */
 	private void setFrame() {
 		pongFrame = new JFrame("Pong");
 		pongFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -22,10 +25,6 @@ public class Game {
 		pongFrame.setResizable(false);
 		pongFrame.setLocation(250, 50);
 		pongFrame.setVisible(true);
-	}
-
-	public void runGame() {
-
 	}
 
 }

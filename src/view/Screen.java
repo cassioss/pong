@@ -23,4 +23,16 @@ public class Screen {
 		playerOneScore = playerTwoScore = 0;
 	}
 
+	/**
+	 * Increments the score depending on the player.
+	 * 
+	 * @param isPlayerOne
+	 */
+	private void incrementScore(boolean isPlayerOne) {
+		if (isPlayerOne)
+			playerOneScore++;
+		else
+			playerTwoScore++;
+	}
+
 }
