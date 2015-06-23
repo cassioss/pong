@@ -49,13 +49,17 @@ public class Paddle {
 
 	// Setter for speed
 
-	public void setSpeed(int direction) {
+	public void setCurrentSpeed(int direction) {
 		if (direction == PADDLE_DIRECTION_UP)
 			currentSpeed = PADDLE_SPEED;
 		else if (direction == PADDLE_DIRECTION_DOWN)
 			currentSpeed = -PADDLE_SPEED;
 		else
 			currentSpeed = 0.0;
+	}
+
+	public double getCurrentSpeed() {
+		return currentSpeed;
 	}
 
 }
