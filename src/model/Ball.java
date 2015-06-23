@@ -26,7 +26,7 @@ public class Ball {
 
 	public void reflectOnPaddle(double paddleSpeed) {
 		speedX *= -1.0;
-		speedY -= paddleSpeed;
+		speedY += 0.1 * paddleSpeed;
 	}
 
 }
