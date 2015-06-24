@@ -10,11 +10,13 @@ import javax.swing.JPanel;
 public class Screen {
 
 	private JPanel pongPanel;
-
-	// Scores
-
 	private int playerOneScore;
 	private int playerTwoScore;
+	
+	public Screen(){
+		restart();
+		pongPanel = new JPanel();
+	}
 
 	/**
 	 * Restarts the score board.
@@ -34,5 +36,9 @@ public class Screen {
 		else
 			playerTwoScore++;
 	}
-
+	
+	public JPanel getPongPanel(){
+		return pongPanel;
+	}
+	
 }

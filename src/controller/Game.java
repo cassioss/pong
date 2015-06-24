@@ -12,7 +12,9 @@ public class Game {
 	private JFrame pongFrame;
 
 	public Game() {
+		ponGUI = new Screen();
 		setFrame();
+		pongFrame.add(ponGUI.getPongPanel());
 	}
 
 	/**
