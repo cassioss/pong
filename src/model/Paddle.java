@@ -7,59 +7,48 @@ package model;
  */
 public class Paddle {
 
-	public static final int PADDLE_WIDTH = 3;
-	public static final int PADDLE_HEIGHT = 30;
+	public static final int PADDLE_WIDTH = 30;
+	public static final int PADDLE_HEIGHT = 100;
 	public static final double PADDLE_SPEED = 15.0;
 
 	// Paddle's direction for speed
 
-	public static final int PADDLE_DIRECTION_UP = 1;
-	public static final int PADDLE_DIRECTION_DOWN = -1;
+	public static final boolean PADDLE_DIRECTION_UP = true;
+	public static final boolean PADDLE_DIRECTION_DOWN = false;
+
+	// Paddle's identifiers
+
+	public static final boolean PADDLE_LEFT = true;
+	public static final boolean PADDLE_RIGHT = false;
 
 	// Paddle's variables
 
-	private double x, y;
+	private int x, y;
 	private double currentSpeed;
 
 	// Constructor
 
-	public Paddle(double x, double y) {
+	public Paddle(int x, int y) {
 		setX(x);
 		setY(y);
-		currentSpeed = 0.0;
 	}
 
 	// Getters and setters for the position
 
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 
-	public void setX(double x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 
-	public void setY(double y) {
+	public void setY(int y) {
 		this.y = y;
-	}
-
-	// Setter for speed
-
-	public void setCurrentSpeed(int direction) {
-		if (direction == PADDLE_DIRECTION_UP)
-			currentSpeed = PADDLE_SPEED;
-		else if (direction == PADDLE_DIRECTION_DOWN)
-			currentSpeed = -PADDLE_SPEED;
-		else
-			currentSpeed = 0.0;
-	}
-
-	public double getCurrentSpeed() {
-		return currentSpeed;
 	}
 
 }
