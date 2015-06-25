@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
 /**
@@ -7,15 +10,14 @@ import javax.swing.JPanel;
  * 
  * @author Cassio dos Santos Sousa
  */
-public class Screen {
+public class Screen extends JPanel {
 
-	private JPanel pongPanel;
 	private int playerOneScore;
 	private int playerTwoScore;
-	
-	public Screen(){
+
+	public Screen() {
+		setBackground(Color.BLACK);
 		restart();
-		pongPanel = new JPanel();
 	}
 
 	/**
@@ -36,9 +38,5 @@ public class Screen {
 		else
 			playerTwoScore++;
 	}
-	
-	public JPanel getPongPanel(){
-		return pongPanel;
-	}
-	
+
 }

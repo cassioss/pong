@@ -1,32 +1,19 @@
 package controller;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+import java.awt.Dimension;
 
-import model.Board;
+import javax.swing.JFrame;
+
 import view.Screen;
 
 public class Game {
 
-	private Screen ponGUI;
-	private JFrame pongFrame;
-
-	public Game() {
-		ponGUI = new Screen();
-		setFrame();
-		pongFrame.add(ponGUI.getPongPanel());
-	}
-
-	/**
-	 * Sets the Pong frame.
-	 */
-	private void setFrame() {
-		pongFrame = new JFrame("Pong");
-		pongFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		pongFrame.setSize(Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
-		pongFrame.setResizable(false);
-		pongFrame.setLocation(250, 50);
-		pongFrame.setVisible(true);
-	}
-
+    public static void main(String[] args) {
+            JFrame frame = new JFrame("Hello");
+            frame.setPreferredSize(new Dimension(800, 600));
+            frame.add(new Screen());
+            frame.pack();
+            frame.setVisible(true);
+    }
 }
+
