@@ -16,8 +16,8 @@ public class Ball {
 	// Constructor
 
 	public Ball() {
-		setX(Board.BOARD_WIDTH / 2);
-		setY(Board.BOARD_HEIGHT / 2);
+		setX(Board.WIDTH / 2);
+		setY(Board.HEIGHT / 2);
 		setSpeedX(15.0);
 		setSpeedY(0.0);
 	}

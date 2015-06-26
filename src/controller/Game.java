@@ -12,8 +12,12 @@ import view.Interface;
 
 public class Game extends JFrame implements KeyListener {
 
+	public Game() {
+		setFrame();
+	}
+
 	private void setFrame() {
-		this.setName("Pong");
+		this.setTitle("Pong");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setSize(800, 600);
 		this.setLocation(250, 50);
