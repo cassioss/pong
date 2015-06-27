@@ -1,16 +1,24 @@
 package view;
 
+import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.AWTEventListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
 
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 
 import model.Ball;
 import model.Board;
@@ -21,37 +29,31 @@ import model.Paddle;
  * 
  * @author Cassio dos Santos Sousa
  */
-public class Interface extends JPanel implements KeyListener {
+public class Interface extends JPanel {
 
-	private Integer playerOneScore;
-	private Integer playerTwoScore;
-	private Paddle playerOnePaddle = new Paddle(true);
-	private Paddle playerTwoPaddle = new Paddle(false);
-	private Ball pongBall = new Ball();
+	private Paddle playerOnePaddle, playerTwoPaddle;
+	private Integer playerOneScore, playerTwoScore;
 
 	public Interface() {
-		setBackground(Color.BLACK);
+		this.setBackground(Color.BLACK);
+		this.setFocusable(true);
+		this.requestFocus();
+		this.addKeyListener(new PongKeyListener());
 		restart();
-		setFocusable(true);
+		playerOnePaddle = new Paddle(true);
+		playerTwoPaddle = new Paddle(false);
+		/*
+		 * this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+		 * KeyStroke.getKeyStroke(KeyEvent.VK_A, 0), "forward");
+		 * this.getActionMap().put("forward", new AbstractAction() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) {
+		 * playerOnePaddle.move(Paddle.PADDLE_DIRECTION_UP); repaint(); } });
+		 */
 	}
 
-	/**
-	 * Restarts the score board.
-	 */
 	private void restart() {
 		playerOneScore = playerTwoScore = 0;
-	}
-
-	/**
-	 * Increments the score depending on the player.
-	 * 
-	 * @param isPlayerOne
-	 */
-	private void incrementScore(boolean isPlayerOne) {
-		if (isPlayerOne)
-			playerOneScore++;
-		else
-			playerTwoScore++;
 	}
 
 	/**
@@ -82,8 +84,8 @@ public class Interface extends JPanel implements KeyListener {
 	 * @param g
 	 */
 	private void drawMidLine(Graphics g) {
-		g.drawLine(Board.HALF_WIDTH, Board.SCORE_BOARD_HEIGHT,
-				Board.HALF_WIDTH, Board.HEIGHT - Board.SCORE_BOARD_HEIGHT);
+		g.drawLine(Board.HALF_WIDTH, Board.UPPER_BOUND, Board.HALF_WIDTH,
+				Board.LOWER_BOUND);
 	}
 
 	private void drawScoreBoard(Graphics g) {
@@ -112,27 +114,34 @@ public class Interface extends JPanel implements KeyListener {
 		drawPaddles(g);
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		keyPressed(e);
+	private class PongKeyListener extends KeyAdapter {
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			keyPressed(e);
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			switch (e.getKeyCode()) {
+			case KeyEvent.VK_W:
+				playerOnePaddle.move(Paddle.PADDLE_DIRECTION_UP);
+				repaint();
+				break;
+			case KeyEvent.VK_S:
+				playerOnePaddle.move(Paddle.PADDLE_DIRECTION_DOWN);
+				repaint();
+				break;
+			case KeyEvent.VK_UP:
+				playerTwoPaddle.move(Paddle.PADDLE_DIRECTION_UP);
+				repaint();
+				break;
+			case KeyEvent.VK_DOWN:
+				playerTwoPaddle.move(Paddle.PADDLE_DIRECTION_DOWN);
+				repaint();
+				break;
+			}
+		}
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_W)
-			playerOnePaddle.movePaddle(Paddle.PADDLE_DIRECTION_UP);
-		else if (e.getKeyCode() == KeyEvent.VK_S)
-			playerOnePaddle.movePaddle(Paddle.PADDLE_DIRECTION_DOWN);
-		else if (e.getKeyCode() == KeyEvent.VK_KP_UP)
-			playerTwoPaddle.movePaddle(Paddle.PADDLE_DIRECTION_UP);
-		else if (e.getKeyCode() == KeyEvent.VK_KP_DOWN)
-			playerTwoPaddle.movePaddle(Paddle.PADDLE_DIRECTION_DOWN);
-		repaint();
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
 }

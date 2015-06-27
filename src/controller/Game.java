@@ -1,33 +1,33 @@
 package controller;
 
-import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.AWTEvent;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
-import model.Paddle;
+import model.Board;
 import view.Interface;
 
-public class Game extends JFrame {
+public class Game {
 
-	private Interface ponGUI = new Interface();
-
-	protected void setFrame() {
-		this.setTitle("Pong");
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setSize(800, 600);
-		this.setLocation(250, 50);
-		this.setResizable(false);
-		this.getContentPane().add(ponGUI);
-		this.setVisible(true);
-		ponGUI.requestFocus();
+	protected static void createAndShowGui() {
+		Interface ponGUI = new Interface();
+		JFrame pongFrame = new JFrame("Pong");
+		pongFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		pongFrame.getContentPane().add(ponGUI);
+		pongFrame.setSize(Board.WIDTH, Board.HEIGHT);
+		pongFrame.setLocation(250, 50);
+		pongFrame.setResizable(false);
+		pongFrame.setVisible(true);
 	}
 
-	protected void runTheBall() {
-		while (true) {
-
-		}
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGui();
+			}
+		});
 	}
+
 }

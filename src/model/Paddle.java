@@ -44,12 +44,12 @@ public class Paddle {
 		return y;
 	}
 
-	public void movePaddle(boolean isPaddleDirectionUp) {
-		y += isPaddleDirectionUp ? PADDLE_SPEED : -PADDLE_SPEED;
-		if (y < 0)
-			y = 0;
-		if (y > Board.HEIGHT - HEIGHT)
-			y = Board.HEIGHT - HEIGHT;
+	public void move(boolean isPaddleDirectionUp) {
+		y -= isPaddleDirectionUp ? PADDLE_SPEED : -PADDLE_SPEED;
+		if (y < Board.UPPER_BOUND)
+			y = Board.UPPER_BOUND;
+		if (y > Board.LOWER_BOUND - HEIGHT)
+			y = Board.LOWER_BOUND - HEIGHT;
 	}
 
 }
