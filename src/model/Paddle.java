@@ -15,8 +15,8 @@ public class Paddle {
 
 	// Paddle's direction for speed
 
-	public static final boolean PADDLE_DIRECTION_UP = true;
-	public static final boolean PADDLE_DIRECTION_DOWN = false;
+	public static final boolean UP = true;
+	public static final boolean DOWN = false;
 
 	// Paddle's variables
 
