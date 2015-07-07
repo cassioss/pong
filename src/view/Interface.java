@@ -8,11 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
@@ -29,6 +29,7 @@ public class Interface extends JPanel {
 
 	private Paddle playerOnePaddle, playerTwoPaddle;
 	private Integer playerOneScore, playerTwoScore;
+	private ArrayList<PaddleAction> moveActions;
 
 	private static final int IFW = WHEN_IN_FOCUSED_WINDOW;
 
@@ -49,7 +50,7 @@ public class Interface extends JPanel {
 	private static final KeyStroke RELEASE_DOWN = KeyStroke.getKeyStroke(
 			KeyEvent.VK_DOWN, 0, true);
 
-	private static final int UP_TIMER_DELAY = 50;
+	private static final int UP_TIMER_DELAY = 90;
 	private Timer upTimer;
 
 	public Interface() {
@@ -59,6 +60,7 @@ public class Interface extends JPanel {
 		restart();
 		playerOnePaddle = new Paddle(true);
 		playerTwoPaddle = new Paddle(false);
+		moveActions = new ArrayList<PaddleAction>();
 
 		InputMap inputMap = getInputMap(IFW);
 
@@ -95,33 +97,16 @@ public class Interface extends JPanel {
 		playerOneScore = playerTwoScore = 0;
 	}
 
-	/**
-	 * Draw the pong board. These are only the essentials, so this method is
-	 * only called once.
-	 * 
-	 * @param g
-	 */
 	private void drawBoard(Graphics g) {
 		drawHorizontalLine(g, 50);
 		drawHorizontalLine(g, Board.HEIGHT - 50);
 		drawMidLine(g);
 	}
 
-	/**
-	 * Draws an horizontal line at any specific height.
-	 * 
-	 * @param g
-	 * @param y
-	 */
 	private void drawHorizontalLine(Graphics g, int y) {
 		g.drawLine(0, y, Board.WIDTH, y);
 	}
 
-	/**
-	 * Draws a vertical line at the screen's midpoint.
-	 * 
-	 * @param g
-	 */
 	private void drawMidLine(Graphics g) {
 		g.drawLine(Board.HALF_WIDTH, Board.UPPER_BOUND, Board.HALF_WIDTH,
 				Board.LOWER_BOUND);
