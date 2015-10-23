@@ -1,3 +1,6 @@
+/.idea
+/out
+/pong.iml
 .classpath
 .project
 .settings/
